@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Program
+{
+
+	
+	public static void Main()
+	{
+		string[] arr = { "Times::01", "Australia News::90", "Dallas News::50", "India Times::00", "Pune Times::01" };
+
+		StringOperations so = new StringOperations();
+		so.function(arr);
+		Console.ReadLine();
+	}
+}
+
+public class StringOperations
+{
+	public Dictionary<string, string> dFinal = new Dictionary<string, string>();
+	//Write your solution in this class
+	//Console log the output
+	public void function(string[] a)
+	{
+		foreach (string i in a)
+		{
+			dFinal.Add(i.Substring(0, i.Length - 1), i.Substring(i.Length - 2));
+		}
+		foreach (KeyValuePair<string, string> author in dFinal.OrderBy(key => key.Value))
+		{
+			Console.WriteLine("Key: {0}, Value: {1}", author.Key, author.Value);
+		}
+	}
+
+	}
+
+//Expected Output
+/*
+India Times::00
+Pune Times::01
+Times::01
+Dallas News::50
+Australia News::90
+*/
